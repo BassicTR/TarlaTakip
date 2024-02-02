@@ -1,0 +1,39 @@
+{% extends 'base2.html' %}
+
+
+{% load static %}
+{% block content %}
+
+<style>
+
+  .container{
+    text-align:center;
+    padding-top:150px;
+    column:2;
+
+  }
+
+
+</style>
+<div class="container">
+ 
+
+
+  <table border="1" style="margin-left:auto; 
+  margin-right:auto;">
+    <h1>Akaryakıt Fiyatları</h1>
+    <thead>
+      <tr>
+        <th>Şehir</th>
+        <th>Ürün</th>
+        <th>Fiyat (TL/lt)</th>
+      </tr>
+    </thead>
+    <tbody id="akaryakitTableBody"></tbody>
+  </table>
+</div>
+  
+<script src="{% static 'js/borsalar.js' %}"></script>
+
+
+{% endblock %}

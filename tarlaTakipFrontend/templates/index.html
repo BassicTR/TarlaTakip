@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Tarla Takip</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="icon" type="image/gif" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.min.css' %}">
+</head>
+
+
+<body class="main-layout">
+   <div class="full_bg">
+    
+      <div class="slider_main">
+         <div id="banner1" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
+            <ol class="carousel-indicators">
+               <li data-target="#banner1" data-slide-to="0" class="active"></li>
+               <li data-target="#banner1" data-slide-to="1"></li>
+               <li data-target="#banner1" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+               <div class="carousel-item active">
+                  <picture>
+                     <source srcset={% static "images/banner.jpg"%}>
+
+                     <img srcset={% static "images/banner.jpg"%} alt="responsive image" class="d-block img-fluid">
+                  </picture>
+                  <div class="carousel-caption relative">
+
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <picture>
+
+                     <img srcset={% static "images/banner.jpg"%} alt="responsive image" class="d-block img-fluid">
+                  </picture>
+                  <div class="carousel-caption relative">
+
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <picture>
+                     <source srcset={% static "images/banner.jpg"%}>
+                     <source srcset={% static "images/banner.jpg"%}>
+                     <source srcset={% static "images/banner.jpg"%}>
+                     <img srcset={% static "images/banner.jpg" %}alt="responsive image" class="d-block img-fluid">
+                  </picture>
+                  <div class="carousel-caption relative">
+
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="willom">
+                     <h1>Tarla Takip</h1>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+  
+   <div class="about">
+      <div class="container-fluid">
+         <div class="row d_flex">
+            <div class="col-lg-6 col-md-12">
+               <div class="titlepage text_align_left">
+                  <span>Hakkımızda</span>
+                  <p>Merhaba! Biz Tarla Takip, tarımın modern dünyadaki önemini kavrayan, çiftçilere ve tarım
+                     profesyonellerine yönelik yenilikçi bir çözüm sunan bir ekibiz. [Tarla Takip Sitesi İsmi], tarım
+                     süreçlerini daha verimli, sürdürülebilir ve kazançlı hale getirmek amacıyla yola çıkmış bir
+                     teknoloji şirketidir.</p>
+                  <a class="read_more" href="about.html">DEVAMINI GÖSTER</a>
+               </div>
+            </div>
+            
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+  
+   <div class="services">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="titlepage text_align_left">
+                  <span>Hizmetlerimiz</span>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-4">
+               <div class="services_box_main">
+                  <div class="services_box text_align_left">
+                     <figure><img src={% static "images/service1.jpg"%} alt="#" /></figure>
+                     <div class="veget">
+                        <h3>Mahsul Takibi</h3>
+                     </div>
+                  </div>
+                  <a class="read_more" href="{% url 'tarlaTakipFrontend:service01' %}">GİT</a>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="services_box_main">
+                  <div class="services_box text_align_left">
+                     <figure><img src={% static "images/service2.jpg"%} alt="#" /></figure>
+                     <div class="veget">
+                        <h3>Kar Zarar Tablosu</h3>
+                     </div>
+                  </div>
+                  <a class="read_more" href="{% url 'tarlaTakipFrontend:service02' %}">GİT</a>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="services_box_main">
+                  <div class="services_box text_align_left">
+                     <figure><img src={% static "images/service3.jpg"%} alt="#" /></figure>
+                     <div class="veget">
+                        <h3>Gübre Takibi</h3>
+
+                     </div>
+                  </div>
+                  <a class="read_more" href="{% url 'tarlaTakipFrontend:service03' %}">GİT</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+  
+   <div class="contact">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12 ">
+               <div class="titlepage text_align_center">
+                  <span>İLETİŞİME GEÇ</span>
+               </div>
+            </div>
+            <div class="col-md-8 offset-md-2">
+               <form id="request" class="main_form">
+                  <div class="row">
+                     <div class="col-md-12 ">
+                        <input class="form_control" placeholder="İsminiz" type="type" name=" Name">
+                     </div>
+                     <div class="col-md-12">
+                        <input class="form_control" placeholder="Telefon Numaranız" type="type" name="Phone Number">
+                     </div>
+                     <div class="col-md-12">
+                        <input class="form_control" placeholder="Mail adresiniz" type="type" name="Email">
+                     </div>
+                     <div class="col-md-12">
+                        <input class="textarea" placeholder="Mesajınız" type="type" name="message">
+                     </div>
+                     <div class="col-md-12">
+                        <div class="group_btn">
+                           <button class="send_btn">GÖNDER</button>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+     <br><br>
+   </div>
+  
+   <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+</div>
+</body>
+</html>
+
+{% endblock %}

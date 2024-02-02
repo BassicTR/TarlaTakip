@@ -1,0 +1,36 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .container {
+            padding-top: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ selected_parcel.tarla_adi }} isimli Tarla'nin Detayları</h1>
+
+        <p><strong>Tarla Adı:</strong> {{ selected_parcel.tarla_adi }}</p>
+        <p><strong>Ada:</strong> {{ selected_parcel.ada }}</p>
+        <p><strong>Parsel:</strong> {{ selected_parcel.parsel }}</p>
+        <p><strong>Alan:</strong> {{ selected_parcel.alan }}</p>
+        <p><strong>Tarladaki ekilmis mahsul:</strong> {{ selected_parcel.ekilen_urun }}</p>
+        <p><strong>Gubre Fiyati:</strong> {{ selected_parcel.gubre }} TL</p>
+        <p><strong>Tohum Fiyati:</strong> {{ selected_parcel.tohum }} TL</p>
+        <p><strong>Surulme Fiyati:</strong> {{ selected_parcel.surulme }} TL</p>
+
+        <h2>Düzenle</h2>
+        <form method="post" action="{% url 'tarlaTakipAfterLogin:show_selected_parcel_details' selected_parcel_id=selected_parcel.tarla_id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Kaydet</button>
+        </form> 
+    </div>
+</body>
+</html>
+{% endblock %}

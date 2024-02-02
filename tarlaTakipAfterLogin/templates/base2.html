@@ -1,0 +1,100 @@
+{% load static %}
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tarla Takip Uygulaması{% endblock %}</title>
+
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.min.css' %}">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.jpeg' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.min.css' %}">
+
+
+    {% block extra_css %}{% endblock %}
+
+
+</head>
+
+<style>
+    
+    .header-area{
+       display:inline-block;
+    }
+  
+    .d_flex{
+        background-image: linear-gradient(to bottom, rgba(34,35,46,0.25) 40%, rgba(111, 111, 111));
+        border: 2px solid black;
+    }
+    
+</style>
+
+
+
+    <header class="header-area">
+        <div class="container-fluid">
+            <div class="row d_flex">
+                <div class=" col-md-2 col-sm-3">
+                    <div class="logo">
+                        <a href="{% url 'tarlaTakipAfterLogin:dashboard' %}">Tarla<span>Takip</span></a>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-9">
+                    <div class="navbar-area">
+                        <nav class="site-navbar">
+                            <ul>
+                                <li><a href="{% url 'tarlaTakipAfterLogin:dashboard' %}">Ana Sayfa</a></li>
+                                <li><a href="{% url 'tarlaTakipAfterLogin:exchange' %}">Borsalar</a></li>
+                                <li><a class="active" href="{% url 'tarlaTakipAfterLogin:available_parcels' %}">Tarlalarim</a></li>
+                                <li><a href="{% url 'tarlaTakipAfterLogin:profit_loss_table' %}">Kar/Zarar</a></li>
+                            </ul>
+                            <button class="nav-toggler">
+                                <span></span>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-2 padd_0 d_none">
+                    <ul class="email text_align_right">
+                        
+<nav >
+    {% if user.is_authenticated %}
+    <p>Mevcut Kullanıcı: {{ user.username }}</p>
+    <a href="{% url 'tarlaTakipFrontend:logout' %}" onclick="clearSessionCookie()">Çıkış Yap</a>
+    {% else %}
+    <a href="{% url 'tarlaTakipFrontend:login' %}">Giriş Yap</a>
+    {% endif %}
+  </nav>
+  
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+

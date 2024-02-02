@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<html lang="tr">
+
+<head>
+   
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   
+   <title>İletişim</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+   <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+   
+   <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+   
+   <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.min.css' %}">
+  
+</head>
+
+
+<body class="main-layout inner_page">
+   <div class="full_bg">
+     
+   </div>
+   <div class="contact">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12 ">
+               <div class="titlepage text_align_center">
+                  <span>İLETİŞİME GEÇ</span>
+               </div>
+            </div>
+            <div class="col-md-8 offset-md-2">
+               <form id="request" class="main_form">
+                  <div class="row">
+                     <div class="col-md-12 ">
+                        <input class="form_control" placeholder="İsminiz" type="type" name="Name">
+                     </div>
+                     <div class="col-md-12">
+                        <input class="form_control" placeholder="Telefon Numaranız" type="type" name="Phone Number">
+                     </div>
+                     <div class="col-md-12">
+                        <input class="form_control" placeholder="Mail adresiniz" type="type" name="Email">
+                     </div>
+                     <div class="col-md-12">
+                        <input class="textarea" placeholder="Mesajınız" type="type" name="message">
+                     </div>
+                     <div class="col-md-12">
+                        <div class="group_btn">
+                           <button class="send_btn">GÖNDER</button>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <br><br>
+   </div>
+ 
+
+</html>
+{% endblock %}

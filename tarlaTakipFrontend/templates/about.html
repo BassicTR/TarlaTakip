@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <title>Hakkımızda</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+   <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+
+   <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.min.css' %}">
+   
+</head>
+
+
+<body class="main-layout inner_page about_page">
+  
+   
+   <div class="about">
+      <div class="container-fluid">
+         <div class="row d_flex">
+            <div class="col-lg-6 col-md-12">
+               <div class="titlepage text_align_left">
+                  <span>Hakkımızda</span>
+                  <p>Merhaba! Biz Tarla Takip, tarımın modern dünyadaki önemini kavrayan, çiftçilere ve tarım
+                     profesyonellerine yönelik yenilikçi bir çözüm sunan bir ekibiz. [Tarla Takip Sitesi İsmi], tarım
+                     süreçlerini daha verimli, sürdürülebilir ve kazançlı hale getirmek amacıyla yola çıkmış bir
+                     teknoloji şirketidir.</p>
+                  <p>Vizyonumuz</p>
+                  <p>
+                     Vizyonumuz, çiftçilerin ve tarım işletmelerinin, tarım faaliyetlerini daha iyi planlamalarına,
+                     yönetmelerine ve optimize etmelerine yardımcı olmak için gelişmiş tarım teknolojilerini
+                     kullanmalarını sağlamaktır. Tarla takip sistemimiz, modern tarımın gereksinimlerini karşılamak
+                     üzere tasarlanmış, kullanıcı dostu ve etkili bir araçtır.
+                  </p>
+                  <p>Misyonumuz</p>
+                  <p>
+                     Misyonumuz, çiftçilere ve tarım profesyonellerine, tarım süreçlerini daha etkili bir şekilde
+                     yönetmeleri için gerekli olan bilgileri, araçları ve kaynakları sunmaktır. Sektördeki en son
+                     teknolojiyi kullanarak, tarımın her aşamasında daha sürdürülebilir ve verimli bir yaklaşım
+                     benimsemeyi amaçlıyoruz.
+                  </p>
+               </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+               <div class="row d_flex">
+                  <div class="col-md-7">
+                     <div class="about_img">
+                        <figure><img src="{% static 'images/about_img.jpg' %}" alt="#" />
+                        </figure>
+                     </div>
+                  </div>
+                  <div class="col-md-5">
+                     <div class="about_img">
+                        <figure><img src="{% static 'images/about_img1.jpg' %}" alt="#" />
+                        </figure>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+ 
+   <script src="{% static 'js/jquery.min.js' %}"></script>
+   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+   <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+   <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+   <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+   <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+</html>
+{% endblock %}

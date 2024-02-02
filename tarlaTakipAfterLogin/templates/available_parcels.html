@@ -1,0 +1,131 @@
+{% extends 'base2.html' %}
+
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Parselleri</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        /* Harita için bir stil belirleyebilirsiniz */
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    
+      
+        .xcontainer {
+            display: flex;
+            justify-content: center; /* Center the content horizontally */
+        }
+    
+        .left-column {
+            flex: 1;
+            padding: 20px;
+        }
+    
+        .right-column {
+            flex: 1;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 3px solid;
+        }
+    
+        th, td {
+            padding: 15px;
+            text-align: center; /* Center the content in cells */
+        }
+    
+        th {
+            background-color: #fcfcfc;
+            text-align: center;
+        }
+    
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .xcontainer{
+            padding-top:150px;
+        }
+
+        #silbtn:hover{
+            background-color:red;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="xcontainer">
+        <div class="left-column">
+            <h1>Kullanıcı Parselleri</h1>
+            {% if available_parcels %}
+            <table border="1">
+                <tr>
+                    <th>Tarla Adi</th>
+                    <th>Ada</th>
+                    <th>Parsel</th>
+                    <th>Alan</th>
+                    <th style="display:none">Alan</th>
+                    <th>İşlemler</th>
+                </tr>
+                {% for parsel in available_parcels %}
+                    <tr data-ada="{{ parsel.ada }}" data-parsel="{{ parsel.parsel }}" data-mahalle="{{ parsel.mahalle }}" onclick="selectParcel(this)">
+                        <td>{{ parsel.tarla_adi }}</td>
+                        <td>{{ parsel.ada }}</td>
+                        <td>{{ parsel.parsel }}</td>
+                        <td>{{ parsel.alan }}</td>
+                        <td style="display:none">{{ parsel.mahalle }}</td>
+                        <td>
+                            <form method="post" action="{% url 'tarlaTakipAfterLogin:delete_parcel' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="mahalle" value="{{ parsel.mahalle }}">
+                                <input type="hidden" name="ada" value="{{ parsel.ada }}">
+                                <input type="hidden" name="parsel" value="{{ parsel.parsel }}">
+                                <button id="silbtn" style=" border:1px solid; padding:3px; "  type="submit">Sil</button>
+                            </form>
+                            
+                             <button style=" border:1px solid; padding:3px;" type="submit" onclick="showDetails('{{ parsel.ada }}', '{{ parsel.parsel }}', '{{ parsel.mahalle }}', {{ parsel.tarla_id }})">Detayli bilgi</button>
+                        </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+                Tarla yoktur, <a href='{% url 'tarlaTakipAfterLogin:dashboard' %}'>buraya tiklayarak</a> tarla ekleyiniz.</p>
+            {% endif %}
+            
+            <div id="general-popup">
+                
+            </div>
+            
+        </div>
+
+        <div class="right-column">
+            <div id='map'></div>
+        </div>
+    </div>
+    <script>
+        function showDetails(ada, parsel, mahalle, selected_parcel_id) {
+            var url = "{% url 'tarlaTakipAfterLogin:show_selected_parcel_details' selected_parcel_id=0 %}".replace('0', selected_parcel_id);
+        
+            
+            window.location.href = url;
+        }
+    </script>
+   
+   
+    <script src="{% static 'js/available_parcels.js' %}"></script>
+
+</body>
+</html>
+
+{% endblock %}

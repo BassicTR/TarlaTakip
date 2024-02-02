@@ -1,0 +1,106 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+{% block content %}
+<style>
+  .xcontainer{
+    display: flex;
+    justify-content: space-between;
+    margin-top:200px
+  }
+
+
+  #map {
+    
+    width:40%;
+    height: 500px;
+  }
+
+  .weatherx {
+    display:inline-block;
+    
+  }
+
+  .sorgucontainer{
+
+  }
+</style>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet'/>
+<body   >
+
+<div class="xcontainer">
+
+
+
+  <div class="weatherx">
+<h1 class="weather">Hava Durumu</h1>
+    <p id="selectedCity"></p>
+    <p id="temperature"></p>
+    <p id="description"></p>
+
+  </div>   
+
+
+<div class="sorgucontainer">
+<p>Bu bolumden tarlanizi secip kaydedin.</p>
+
+
+<select name="il" id="il" onchange="ilcesec()">
+  <option value="">Il Seciniz</option>
+</select>
+<select name="ilce" id="ilce" onchange="mahallesec(),getHavaDurumu()">
+  <option value="">Ilce Seciniz</option>
+</select>
+
+<select id="locationSelect">
+  <option value="">Bir konum seçin</option>
+</select>
+
+
+<form id="addparcel" name="addparcel" method="post" action="{% url 'tarlaTakipAfterLogin:add_parcel' %}">
+  {% csrf_token %}
+  
+ 
+  <label style="display: none;" for="ada" id="ada" >Ada:</label>
+  <input type="text" placeholder="Ada" id="ada1" name="ada">
+
+  <label style="display: none;" for="parselInput" id="parsel" >Parsel:</label>
+  <input type="text" placeholder="Parsel" id="parsel1" name="parsel">
+
+  <label style="display: none;" for="alan" id="alan" >Alan:</label>
+  <input style="display: none;" type="text" placeholder="Alan" id="alan1" value="0" name="alan">
+
+  <input style="display: none;" type="text" placeholder="mahalle" id="mahalle_id" name="mahalle">
+
+  <input style="display: none;" type="text" placeholder="Tarla ID" id="tarla_id" name="tarla_id" value="{{ tarla_id }}">
+
+  <label style="display: none;" for="tarla_adi" id="tarla_adi_label" >Tarla Adı:</label>
+  <input style="display: none;" type="text" placeholder="Tarla Adı" id="tarla_adi" name="tarla_adi">
+
+  <button style="display: none;" type="submit" id="submitbtn" onclick="submitForm()">Formu Gönder</button>
+  
+</form>
+
+<input type="button" value="Sorgula" onClick="ParselBul()">
+
+
+
+{% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+{% endif %}
+
+</div>
+
+<div id="map"></div>
+</div>
+
+
+
+<script src="{% static 'js/dashboard.js' %}"></script>
+
+
+
+
+{% endblock %}
+

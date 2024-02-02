@@ -1,0 +1,88 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+
+    <style>
+        .container {
+            padding-top: 150px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .profit {
+            color: green;
+        }
+
+        .loss {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kar/Zarar Tablosu</h1>
+
+        <table id="karZararTablosu">
+            <tr>
+                <th>Tarla ID</th>
+                <th>Tarla Adı</th>
+                <th>Parsel</th>
+                <th>Ada</th>
+                <th>Alan</th>
+                <th>Gübre</th>
+                <th>Tohum</th>
+                <th>Sürülme</th>
+                <th>Toplam Gelir</th>
+                <th>Toplam Maliyet</th>
+                <th>Kar/Zarar</th>
+                <th>Islemler</th>
+            </tr>
+            {% for item in profit_loss_data %}
+                <tr>
+                    <td>{{ item.tarla_id }}</td>
+                    <td>{{ item.tarla_adi }}</td>
+                    <td>{{ item.parsel }}</td>
+                    <td>{{ item.ada }}</td>
+                    <td>{{ item.alan }}</td>
+                    <td>{{ item.gubre|floatformat:2 }} TL</td>
+                    <td>{{ item.tohum|floatformat:2 }} TL</td>
+                    <td>{{ item.surulme|floatformat:2 }} TL</td>
+                    <td>{{ item.total_income }} TL</td>
+                    <td>{{ item.total_cost }} TL</td>
+                    <td class="{% if item.profit_loss >= 0 %}profit{% else %}loss{% endif %}">
+                        {{ item.profit_loss }} TL
+                    </td>
+                    <td>
+                      <button class="pdfButton" onclick="generatePDF('{{ item.tarla_id }}')">PDF Oluştur</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+
+<script src="{% static 'js/karzarar.js' %}"></script>
+
+
+{% endblock %}
